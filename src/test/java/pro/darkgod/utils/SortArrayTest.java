@@ -17,7 +17,10 @@ class SortArrayTest {
 
     private SortArray sortArray;
     private List<Student> unorderedStudents = new ArrayList<>();
-
+    
+    /**
+     * 
+     */
     @BeforeEach
     void setupTest() {
         sortArray = new SortArray();
@@ -33,7 +36,14 @@ class SortArrayTest {
     void definedSortArray() {
         assertNotNull(sortArray);
     }
-
+    
+    /**
+     * Scenario: Sorting students.
+     * Given: We have a list of students with (ID, Name, and CGPA) 
+     *        and diferent CGPA
+     * When: We sort the student list
+     * Then: We should have a list of student sorted descending by CGPA
+     */
     @Test
     void sortsStudentArrayWhenOnlyCgpaApply() {
         unorderedStudents.add(new Student(33, "Rumpa", 3.68));
@@ -47,7 +57,16 @@ class SortArrayTest {
         assertEquals(56, orderedStudents.get(1).getId());
         assertEquals(33, orderedStudents.get(2).getId());
     }
-
+    
+    /**
+     * Scenario: Sorting students.
+     * Given: We have a list of students with (ID, Name, and CGPA) 
+     *        and some of their CGPA are equal
+     * When: We sort the student list
+     * Then: We should have a list of student sorted first descending by CGPA
+     * And: If the CGPA are equal then those students are sorted by 
+     *      Name alphabetically
+     */
     @Test
     void sortsStudentArrayWhenCgpaEqual() {
         unorderedStudents.add(new Student(33, "Rumpa", 3.68));
@@ -61,7 +80,16 @@ class SortArrayTest {
         assertEquals(85, orderedStudents.get(1).getId());
         assertEquals(33, orderedStudents.get(2).getId());
     }
-
+    
+    /**
+     * Scenario: Sorting students.
+     * Given: We have a list of students with (ID, Name, and CGPA) and some
+     *        of their both have Name and CGPA equal
+     * When: We sort the student list
+     * Then: We should have a list of student sorted first descending by CGPA, 
+     *       second by Name alphabetically
+     * And: Sorted ascending by ID
+     */
     @Test
     void sortStudentArrayWhenStudentsWithSameFirstName() {
         unorderedStudents.add(new Student(33, "Rumpa", 3.68));
